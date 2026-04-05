@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medical Insurance Cost Prediction | PBL 2026</title>
+    <title>Classification of Arrhythmia | PBL 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -134,11 +134,10 @@
                 class="inline-block px-4 py-1 border border-slate-800 rounded-full text-slate-500 text-[10px] font-mono mb-6 uppercase tracking-widest">
                 ID: 23FE10CSE00408 | 23FE10CSE00404</div>
             <h1 class="text-5xl md:text-6xl font-extrabold mb-8 uppercase leading-tight"><span
-                    class="gradient-text uppercase">Medical Insurance Cost Prediction Analysis Using Machine Learning</span></h1>
+                    class="gradient-text uppercase">Classification of Arrhythmia Using Machine Learning</span></h1>
             <p
                 class="text-slate-400 max-w-2xl mx-auto italic text-lg leading-relaxed border-l-2 border-blue-500/30 pl-6 text-left">
-                "Can machine learning algorithms accurately predict medical insurance costs based on demographic and
-                health-related factors to enable personalized insurance pricing and better financial planning?"
+                "Can classical machine learning algorithms, coupled with PCA dimensionality reduction on ECG data, accurately detect and classify cardiac arrhythmia into 16 distinct groups for automated early medical diagnosis?"
             </p>
         </section>
 
@@ -147,30 +146,21 @@
             <div class="glass p-10 rounded-[2.5rem] flex flex-col justify-center border-l-4 border-blue-600">
                 <h2 class="text-3xl font-extrabold mb-6">Problem Statement</h2>
                 <p class="text-slate-400 leading-relaxed text-justify">
-                    The escalating costs and complexities in the healthcare sector underscore the necessity for
-                    efficient predictive models to anticipate medical insurance prices. Rising healthcare costs make it
-                    difficult for individuals to predict future medical expenses, while insurance providers struggle to
-                    offer personalized plans without data-driven insights. Traditional actuarial methods often encounter
-                    difficulties in capturing the intricate interrelations and dynamic nature of various factors
-                    affecting insurance pricing.
+                    Electrocardiogram (ECG) readouts are essential diagnostic tools for cardiac health, but manual interpretation over large-scale hospital datasets is highly time-consuming and error-prone. A single irregular heartbeat could be harmless, but persistent arrhythmias may cause heart failure or stroke. This project seeks to confront the challenges of high clinical dimensionality (279 features per patient) and severely imbalanced class distributions to automate reliable early arrhythmia classification.
                 </p>
             </div>
             <div class="space-y-6">
                 <div class="glass p-7 rounded-3xl border-r-4 border-blue-500/50 feature-card">
                     <h3 class="text-blue-400 font-bold text-xs uppercase tracking-widest mb-2">Literature Review</h3>
                     <p class="text-sm text-slate-500 italic">
-                        Analyzed digital health startups transforming healthcare, AI-powered diagnostics and predictive
-                        analytics, existing regression-based insurance prediction models, and SHAP-based feature
-                        importance analysis techniques.
+                        Explored existing cardiology analysis standards (Guvenir et al., 1997) utilizing the UCI ML Repository, reviewed advanced preprocessing techniques to counteract multilinearity through Principal Component Analysis (PCA), and studied synthetic oversampling mechanics (SMOTE) to rebalance clinical data.
                     </p>
                 </div>
                 <div class="glass p-7 rounded-3xl border-r-4 border-purple-500/50 feature-card">
                     <h3 class="text-purple-400 font-bold text-xs uppercase tracking-widest mb-2">Research Gap &
                         Innovation</h3>
                     <p class="text-sm text-slate-500 italic">
-                        Lack of personalized predictions for individual patients, limited use of advanced ensemble
-                        techniques (XGBoost, Gradient Boosting), and challenges in accessing comprehensive datasets. Our
-                        approach compares 9 regression models to identify the optimal predictor.
+                        Real-world ECG data is sparsely distributed, often leaving vital minority defect types with barely 2–5 diagnostic samples. Our system tackles this "Curse of Dimensionality" by mapping data effectively down to 95% variance limits and implementing 6 predictive classifiers optimized strictly for maximal Recall rates.
                     </p>
                 </div>
             </div>
@@ -183,69 +173,66 @@
 
             <!-- Dataset Info -->
             <div class="glass p-8 rounded-3xl">
-                <h3 class="text-xl font-bold mb-6 text-center"><i class="fas fa-database text-blue-500 mr-3"></i>Dataset
+                <h3 class="text-xl font-bold mb-6 text-center"><i class="fas fa-heartbeat text-blue-500 mr-3"></i>Dataset
                     Overview</h3>
                 <div class="grid md:grid-cols-3 gap-6 text-center">
                     <div class="p-4 rounded-2xl bg-white/5">
-                        <p class="text-3xl font-black text-blue-400">1,338</p>
-                        <p class="text-xs text-slate-500 uppercase tracking-widest mt-1">Total Records</p>
+                        <p class="text-3xl font-black text-blue-400">452</p>
+                        <p class="text-xs text-slate-500 uppercase tracking-widest mt-1">Patient Records</p>
                     </div>
                     <div class="p-4 rounded-2xl bg-white/5">
-                        <p class="text-3xl font-black text-purple-400">6</p>
-                        <p class="text-xs text-slate-500 uppercase tracking-widest mt-1">Features/Columns</p>
+                        <p class="text-3xl font-black text-purple-400">279</p>
+                        <p class="text-xs text-slate-500 uppercase tracking-widest mt-1">Features per Record</p>
                     </div>
                     <div class="p-4 rounded-2xl bg-white/5">
-                        <p class="text-3xl font-black text-green-400">Kaggle</p>
-                        <p class="text-xs text-slate-500 uppercase tracking-widest mt-1">Data Source</p>
+                        <p class="text-3xl font-black text-green-400">16</p>
+                        <p class="text-xs text-slate-500 uppercase tracking-widest mt-1">Arrhythmia Subtypes</p>
                     </div>
                 </div>
                 <div class="mt-6 grid md:grid-cols-6 gap-3">
                     <div class="text-center p-3 rounded-xl bg-slate-800/50"><span
-                            class="text-xs font-bold text-blue-300">Age</span></div>
+                            class="text-xs font-bold text-blue-300">Age & Sex</span></div>
                     <div class="text-center p-3 rounded-xl bg-slate-800/50"><span
-                            class="text-xs font-bold text-blue-300">Sex</span></div>
+                            class="text-xs font-bold text-blue-300">Height</span></div>
                     <div class="text-center p-3 rounded-xl bg-slate-800/50"><span
-                            class="text-xs font-bold text-blue-300">BMI</span></div>
+                            class="text-xs font-bold text-blue-300">Weight</span></div>
                     <div class="text-center p-3 rounded-xl bg-slate-800/50"><span
-                            class="text-xs font-bold text-blue-300">Children</span></div>
+                            class="text-xs font-bold text-blue-300">QRS Duration</span></div>
                     <div class="text-center p-3 rounded-xl bg-slate-800/50"><span
-                            class="text-xs font-bold text-blue-300">Smoker</span></div>
+                            class="text-xs font-bold text-blue-300">P-R Interval</span></div>
                     <div class="text-center p-3 rounded-xl bg-slate-800/50"><span
-                            class="text-xs font-bold text-blue-300">Region</span></div>
+                            class="text-xs font-bold text-blue-300">Vector Angles</span></div>
                 </div>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="glass p-8 rounded-3xl text-center feature-card">
-                    <i class="fas fa-cogs text-blue-500 text-3xl mb-4"></i>
+                    <i class="fas fa-filter text-blue-500 text-3xl mb-4"></i>
                     <h3 class="font-bold mb-2 uppercase text-xs tracking-widest">Data Preprocessing</h3>
-                    <p class="text-sm text-slate-500">Categorical to numerical conversion, 80/20 train-test split,
-                        handling missing values, feature engineering</p>
+                    <p class="text-sm text-slate-500">Implemented median imputation for empty entries, purged zero-variance characteristics, scaling routines, and categorical encodings.</p>
                 </div>
                 <div class="glass p-8 rounded-3xl text-center feature-card">
-                    <i class="fas fa-microchip text-purple-500 text-3xl mb-4"></i>
-                    <h3 class="font-bold mb-2 uppercase text-xs tracking-widest">ML Algorithms</h3>
-                    <p class="text-sm text-slate-500">Linear, Ridge, Random Forest, Decision Tree,
-                        XGBoost, Gradient Boosting, KNN, SVR</p>
+                    <i class="fas fa-project-diagram text-purple-500 text-3xl mb-4"></i>
+                    <h3 class="font-bold mb-2 uppercase text-xs tracking-widest">Advanced Pipelines</h3>
+                    <p class="text-sm text-slate-500">De-correlated feature matrix utilizing Principal Component Analysis (preserving 95% variance) and simulated minority samples via SMOTE oversampling.</p>
                 </div>
                 <div class="glass p-8 rounded-3xl text-center border-2 border-green-500/20 bg-green-500/5 feature-card">
                     <i class="fab fa-python text-green-500 text-3xl mb-4"></i>
                     <h3 class="font-bold mb-4 uppercase text-xs tracking-widest text-green-400">Tech Stack</h3>
-                    <p class="text-sm text-slate-500">Python, Scikit-learn, XGBoost, Pandas, NumPy, Matplotlib, Seaborn
-                    </p>
+                    <p class="text-sm text-slate-500">Python 3.7+, Scikit-learn, imbalanced-learn (SMOTE), Pandas, NumPy, Matplotlib, Jupyter Notebook environment</p>
                 </div>
             </div>
 
             <!-- Algorithm Badges -->
             <div class="flex flex-wrap justify-center gap-3">
-                <span class="algo-badge px-4 py-2 rounded-full text-xs font-bold">XGBoost</span>
-                <span class="algo-badge px-4 py-2 rounded-full text-xs font-bold">Gradient Boosting</span>
+                <span class="algo-badge px-4 py-2 rounded-full text-xs font-bold">Kernelized SVC</span>
                 <span class="algo-badge px-4 py-2 rounded-full text-xs font-bold">Random Forest</span>
-                <span class="algo-badge px-4 py-2 rounded-full text-xs font-bold">Linear Regression</span>
-                <span class="algo-badge px-4 py-2 rounded-full text-xs font-bold">Ridge</span>
-                <span class="algo-badge px-4 py-2 rounded-full text-xs font-bold">Decision Tree</span>
+                <span class="algo-badge px-4 py-2 rounded-full text-xs font-bold">Linear SVC</span>
+                <span class="algo-badge px-4 py-2 rounded-full text-xs font-bold">Logistic Regression</span>
                 <span class="algo-badge px-4 py-2 rounded-full text-xs font-bold">KNN</span>
-                <span class="algo-badge px-4 py-2 rounded-full text-xs font-bold">SVR</span>
+                <span class="algo-badge px-4 py-2 rounded-full text-xs font-bold">Decision Tree</span>
+                <span class="algo-badge px-4 py-2 rounded-full text-xs font-bold">PCA</span>
+                <span class="algo-badge px-4 py-2 rounded-full text-xs font-bold">SMOTE</span>
             </div>
         </section>
 
@@ -260,21 +247,19 @@
                     <div
                         class="p-6 rounded-2xl bg-gradient-to-r from-blue-600/20 to-purple-600/20 flex justify-between items-center border border-blue-500/30 shadow-inner">
                         <span class="text-slate-300 font-bold uppercase text-xs tracking-widest">Best Model:
-                            XGBoost</span>
-                        <span class="text-blue-400 font-mono font-black text-3xl">86.81%</span>
+                            Kernel SVM</span>
+                        <span class="text-blue-400 font-mono font-black text-3xl">80.21%</span>
                     </div>
                     <div class="p-4 rounded-2xl bg-white/5 flex justify-between items-center border border-white/10">
-                        <span class="text-slate-400 font-bold uppercase text-xs tracking-widest">MAE (XGBoost)</span>
-                        <span class="text-green-400 font-mono font-bold text-xl">$2,381.57</span>
+                        <span class="text-slate-400 font-bold uppercase text-xs tracking-widest">Pre-PCA Base Acc (Kernel SVM)</span>
+                        <span class="text-yellow-400 font-mono font-bold text-xl">~74.00%</span>
                     </div>
                     <div class="p-4 rounded-2xl bg-white/5 flex justify-between items-center border border-white/10">
-                        <span class="text-slate-400 font-bold uppercase text-xs tracking-widest">RMSE (XGBoost)</span>
-                        <span class="text-yellow-400 font-mono font-bold text-xl">$4,450.44</span>
+                        <span class="text-slate-400 font-bold uppercase text-xs tracking-widest">Crucial Selected Metric</span>
+                        <span class="text-green-400 font-mono font-bold text-xl">Test Recall</span>
                     </div>
                     <p class="text-slate-500 text-sm italic text-justify leading-relaxed mt-4">
-                        XGBoost and Gradient Boosting outperformed other models with R² scores of 0.8681 and 0.8679
-                        respectively. Random Forest achieved 0.8371, while traditional Linear Regression scored 0.7447.
-                        KNN and SVR showed poor performance for this regression task.
+                        Kernelized Support Vector Machine trained with PCA transformations selected as optimal. While many algorithms achieved reasonable total test-set Accuracy (like Random Forest's 78%), predicting medical irregularities fundamentally demands maximizing the Recall metric—drastically curtailing False Negatives (ignored arrhythmia conditions).
                     </p>
                 </div>
             </div>
@@ -284,62 +269,41 @@
                 <table class="w-full text-sm">
                     <thead>
                         <tr class="border-b border-slate-700">
-                            <th class="text-left py-3 px-4 text-slate-400 uppercase text-xs tracking-widest">Algorithm
-                            </th>
-                            <th class="text-center py-3 px-4 text-slate-400 uppercase text-xs tracking-widest">R² Score
-                            </th>
-                            <th class="text-center py-3 px-4 text-slate-400 uppercase text-xs tracking-widest">MAE</th>
-                            <th class="text-center py-3 px-4 text-slate-400 uppercase text-xs tracking-widest">RMSE</th>
+                            <th class="text-left py-3 px-4 text-slate-400 uppercase text-xs tracking-widest">Algorithm (PCA + SMOTE)</th>
+                            <th class="text-center py-3 px-4 text-slate-400 uppercase text-xs tracking-widest">Accuracy</th>
+                            <th class="text-center py-3 px-4 text-slate-400 uppercase text-xs tracking-widest">Overall Analysis</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="border-b border-slate-800 bg-blue-500/10">
-                            <td class="py-3 px-4 font-bold text-blue-400">XGBoost Regression</td>
-                            <td class="py-3 px-4 text-center font-mono font-bold text-blue-400">0.8681</td>
-                            <td class="py-3 px-4 text-center font-mono">2381.57</td>
-                            <td class="py-3 px-4 text-center font-mono">4450.44</td>
+                            <td class="py-3 px-4 font-bold text-blue-400">Kernelized SVC</td>
+                            <td class="py-3 px-4 text-center font-mono font-bold text-blue-400">80.21%</td>
+                            <td class="py-3 px-4 text-center">Best sensitivity; cleanly delineates non-linear RBF mappings</td>
                         </tr>
                         <tr class="border-b border-slate-800 bg-purple-500/10">
-                            <td class="py-3 px-4 font-bold text-purple-400">Gradient Boosting</td>
-                            <td class="py-3 px-4 text-center font-mono font-bold text-purple-400">0.8679</td>
-                            <td class="py-3 px-4 text-center font-mono">2383.91</td>
-                            <td class="py-3 px-4 text-center font-mono">4453.83</td>
+                            <td class="py-3 px-4 font-bold text-purple-400">Random Forest</td>
+                            <td class="py-3 px-4 text-center font-mono font-bold text-purple-400">~78.00%</td>
+                            <td class="py-3 px-4 text-center">Robust generalized ensemble balance scaling nicely to tests</td>
                         </tr>
                         <tr class="border-b border-slate-800">
-                            <td class="py-3 px-4">Random Forest</td>
-                            <td class="py-3 px-4 text-center font-mono">0.8371</td>
-                            <td class="py-3 px-4 text-center font-mono">2747.46</td>
-                            <td class="py-3 px-4 text-center font-mono">4944.73</td>
+                            <td class="py-3 px-4">Linear SVC</td>
+                            <td class="py-3 px-4 text-center font-mono">~76.00%</td>
+                            <td class="py-3 px-4 text-center">Fair performance, mainly on well-represented major classes</td>
                         </tr>
                         <tr class="border-b border-slate-800">
-                            <td class="py-3 px-4">Ridge Regression</td>
-                            <td class="py-3 px-4 text-center font-mono">0.7448</td>
-                            <td class="py-3 px-4 text-center font-mono">4273.45</td>
-                            <td class="py-3 px-4 text-center font-mono">6190.80</td>
+                            <td class="py-3 px-4">Logistic Regression</td>
+                            <td class="py-3 px-4 text-center font-mono">~75.00%</td>
+                            <td class="py-3 px-4 text-center">Baseline generalized statistical classification benchmark</td>
                         </tr>
                         <tr class="border-b border-slate-800">
-                            <td class="py-3 px-4">Linear Regression</td>
-                            <td class="py-3 px-4 text-center font-mono">0.7447</td>
-                            <td class="py-3 px-4 text-center font-mono">4267.21</td>
-                            <td class="py-3 px-4 text-center font-mono">6191.69</td>
+                            <td class="py-3 px-4">KNN Classifier</td>
+                            <td class="py-3 px-4 text-center font-mono">~72.00%</td>
+                            <td class="py-3 px-4 text-center">Reaped large benefits specifically upon applying PCA</td>
                         </tr>
-                        <tr class="border-b border-slate-800">
+                        <tr class="border-b border-slate-800 opacity-70">
                             <td class="py-3 px-4">Decision Tree</td>
-                            <td class="py-3 px-4 text-center font-mono">0.7003</td>
-                            <td class="py-3 px-4 text-center font-mono">3324.37</td>
-                            <td class="py-3 px-4 text-center font-mono">6708.47</td>
-                        </tr>
-                        <tr class="border-b border-slate-800 opacity-50">
-                            <td class="py-3 px-4">K-Nearest Neighbors</td>
-                            <td class="py-3 px-4 text-center font-mono text-red-400">0.0394</td>
-                            <td class="py-3 px-4 text-center font-mono">8592.55</td>
-                            <td class="py-3 px-4 text-center font-mono">12010.89</td>
-                        </tr>
-                        <tr class="opacity-50">
-                            <td class="py-3 px-4">Support Vector Regression</td>
-                            <td class="py-3 px-4 text-center font-mono text-red-400">-0.099</td>
-                            <td class="py-3 px-4 text-center font-mono">6401.64</td>
-                            <td class="py-3 px-4 text-center font-mono">12851.56</td>
+                            <td class="py-3 px-4 text-center font-mono text-red-400">~68.00%</td>
+                            <td class="py-3 px-4 text-center">Underwhelming; heavily prone to overfit even with SMOTE data</td>
                         </tr>
                     </tbody>
                 </table>
@@ -352,28 +316,24 @@
                     class="text-purple-500">Findings</span></h2>
             <div class="grid md:grid-cols-2 gap-6">
                 <div class="glass p-6 rounded-2xl feature-card">
-                    <i class="fas fa-smoking text-red-500 text-2xl mb-3"></i>
-                    <h3 class="font-bold text-lg mb-2">Smoking Impact</h3>
-                    <p class="text-sm text-slate-500">Smoking status is the most significant predictor of insurance
-                        costs, with smokers paying substantially higher premiums than non-smokers.</p>
+                    <i class="fas fa-compress-arrows-alt text-blue-500 text-2xl mb-3"></i>
+                    <h3 class="font-bold text-lg mb-2">Combating Dimensionality</h3>
+                    <p class="text-sm text-slate-500">Attempting to map 279 diverse features across just 452 patient sets naturally collapses accuracy. Feature-extraction using PCA mitigated complex multicollinear ECG properties, securing model convergence.</p>
                 </div>
                 <div class="glass p-6 rounded-2xl feature-card">
-                    <i class="fas fa-weight text-yellow-500 text-2xl mb-3"></i>
-                    <h3 class="font-bold text-lg mb-2">BMI Correlation</h3>
-                    <p class="text-sm text-slate-500">Higher BMI values correlate with increased insurance charges,
-                        especially when combined with smoking behavior.</p>
+                    <i class="fas fa-balance-scale text-red-500 text-2xl mb-3"></i>
+                    <h3 class="font-bold text-lg mb-2">Class Equilibrium</h3>
+                    <p class="text-sm text-slate-500">Since 'Normal' heartbeats comprised 54% of all cases—and minority conditions existed as rarely as dual measurements—Synthetic Minority Oversampling (SMOTE) proved absolutely critical for preventing skewed decision boundaries.</p>
                 </div>
                 <div class="glass p-6 rounded-2xl feature-card">
-                    <i class="fas fa-birthday-cake text-blue-500 text-2xl mb-3"></i>
-                    <h3 class="font-bold text-lg mb-2">Age Factor</h3>
-                    <p class="text-sm text-slate-500">Insurance costs increase progressively with age, reflecting higher
-                        healthcare utilization among older individuals.</p>
+                    <i class="fas fa-project-diagram text-purple-500 text-2xl mb-3"></i>
+                    <h3 class="font-bold text-lg mb-2">Linear Separability Limits</h3>
+                    <p class="text-sm text-slate-500">The complex overlap across diverse cardiac faults demanded non-linear strategies. The kernel-trick equipped Support Vector Machine accurately grouped features previously blended together in initial datasets.</p>
                 </div>
                 <div class="glass p-6 rounded-2xl feature-card">
-                    <i class="fas fa-robot text-green-500 text-2xl mb-3"></i>
-                    <h3 class="font-bold text-lg mb-2">Ensemble Methods Excel</h3>
-                    <p class="text-sm text-slate-500">XGBoost and Gradient Boosting significantly outperformed
-                        traditional regression methods, achieving 86%+ accuracy.</p>
+                    <i class="fas fa-bullseye text-green-500 text-2xl mb-3"></i>
+                    <h3 class="font-bold text-lg mb-2">Targeting High Recall</h3>
+                    <p class="text-sm text-slate-500">Algorithmic selection solely for accuracy proves functionally risky within cardiological domains. Designating Recall as the chief parameter inherently shields downstream patient prognosis against deceptive 'False Negative' results.</p>
                 </div>
             </div>
         </section>
@@ -429,15 +389,15 @@
             }, 1000);
         }
 
-        // RESULTS CHART - Algorithm Comparison (R² Scores)
+        // RESULTS CHART - Algorithm Comparison (Accuracy Scores)
         const ctx = document.getElementById('resultsChart').getContext('2d');
         new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['XGBoost', 'Gradient\nBoosting', 'Random\nForest', 'Ridge', 'Linear', 'Decision\nTree'],
+                labels: ['Kernel\nSVC', 'Random\nForest', 'Linear\nSVC', 'Logistic\nReg', 'KNN', 'Decision\nTree'],
                 datasets: [{
-                    label: 'R² Score',
-                    data: [0.8681, 0.8679, 0.8371, 0.7448, 0.7447, 0.7003],
+                    label: 'Accuracy',
+                    data: [0.8021, 0.78, 0.76, 0.75, 0.72, 0.68],
                     backgroundColor: [
                         'rgba(59, 130, 246, 0.9)',
                         'rgba(139, 92, 246, 0.9)',
@@ -467,7 +427,7 @@
                     tooltip: {
                         callbacks: {
                             label: function (context) {
-                                return `R² Score: ${(context.raw * 100).toFixed(2)}%`;
+                                return `Accuracy: ${(context.raw * 100).toFixed(2)}%`;
                             }
                         }
                     }
@@ -485,7 +445,7 @@
                         },
                         title: {
                             display: true,
-                            text: 'R² Score (Accuracy)',
+                            text: 'Test Accuracy (%)',
                             color: '#64748b',
                             font: { size: 11, weight: 'bold' }
                         }
