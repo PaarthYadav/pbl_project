@@ -1,17 +1,15 @@
 <div align="center">
 
-# 💓 Classification of Arrhythmia — ECG Data
+# Classification of Arrhythmia — ECG Data
 
 [![Python](https://img.shields.io/badge/Python-3.7+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
 [![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-F37626?style=for-the-badge&logo=jupyter&logoColor=white)](https://jupyter.org/)
 [![Dataset](https://img.shields.io/badge/Dataset-UCI%20ML%20Repository-blue?style=for-the-badge)](https://archive.ics.uci.edu/ml/datasets/Arrhythmia)
-[![Best Accuracy](https://img.shields.io/badge/Best%20Accuracy-80.21%25-brightgreen?style=for-the-badge)](https://github.com/shsarv/Machine-Learning-Projects/tree/main/Classification%20of%20Arrhythmia%20%5BECG%20DATA%5D)
+[![Best Accuracy](https://img.shields.io/badge/Best%20Accuracy-80.21%25-brightgreen?style=for-the-badge)](https://github.com/PaarthYadav/pbl_project)
 [![License](https://img.shields.io/badge/License-MIT-1abc9c?style=for-the-badge)](../LICENSE.md)
 
 > Detecting the **presence or absence of cardiac arrhythmia** and classifying it into one of **16 groups** using classical ML algorithms and PCA-based dimensionality reduction on ECG signal data.
-
-[🔙 Back to Main Repository](https://github.com/shsarv/Machine-Learning-Projects)
 
 </div>
 
@@ -273,11 +271,3 @@ jupyter notebook "final with pca.ipynb"
 - [scikit-learn PCA Documentation](https://scikit-learn.org/stable/modules/decomposition.html#pca)
 
 ---
-
-<div align="center">
-
-Part of the [Machine Learning Projects](https://github.com/shsarv/Machine-Learning-Projects) collection by [Sarvesh Kumar Sharma](https://github.com/shsarv)
-
-⭐ Star the main repo if this helped you!
-
-</div>
