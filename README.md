@@ -270,7 +270,7 @@ jupyter notebook "final with pca.ipynb"
 - [imbalanced-learn SMOTE Documentation](https://imbalanced-learn.org/stable/references/generated/imblearn.over_sampling.SMOTE.html)
 - [scikit-learn PCA Documentation](https://scikit-learn.org/stable/modules/decomposition.html#pca)
 
-## Presentation Link 🔗
+## 🔗 Presentation Link
 
 https://paarthyadav.github.io/pbl_project/
 
